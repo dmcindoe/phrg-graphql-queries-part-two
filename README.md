@@ -20,8 +20,60 @@ We also want to drill into some infomation on the world's countries and language
 [Countries](https://countries.trevorblades.com/) uses a GraphQL IDE with a slightly different interface. Use this site to form queries that only return the requested data. Be sure to explore the "docs" tab on the right of the page.
 
 1. All the continent names.
+{
+  continents{
+    name 
+  }
+}
 1. All countries names and their capitols.
+
+{
+  continents{
+    name 
+    countries {name capital}
+  }
+}
 1. All countries names, codes, and all the languages spoken in each country.
+{
+  continents{
+    name 
+    countries {
+      code 
+      name 
+      capital
+      languages{name}
+    }
+  }
+}
 1. The code for Brazil is "BR". Query for its name, native name, phone code, flag (emoji), and all of its states.
+{
+    country(code: "BR") {
+      code 
+      name 
+      native
+      phone
+      emoji
+      states{name}
+  }
+}
+
 1. The code for Dutch is "nl". Query the language's name, whether it reads right-to-left, and what it is referred to natively.
+{
+    language(code: "nl") {
+      name 
+      native
+      rtl
+  }
+}
+
+
 1. The code for Europe is "EU". Query the continent's name, and its countries names and currencies.
+{
+  continent (code: "EU"){
+    name
+    countries {
+      name 
+     currency
+    }
+  }
+}
